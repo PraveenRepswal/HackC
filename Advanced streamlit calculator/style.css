@@ -1,0 +1,50 @@
+.calculator {
+    width: 340px;
+    margin: 0 auto;
+    padding: 10px;
+    border-radius: 10px;
+    color: #fff;
+}
+.calculator input, .calculator button {
+    width: 80px;
+    height: 80px;
+    margin: 3px;
+    font-size: 24px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+}
+.calculator button {
+    background-color: #333;
+    color: #fff;
+}
+.calculator button:active {
+    background-color: #555;
+}
+.output {
+    height: 80px;
+    font-size: 32px;
+    text-align: right;
+    padding: 0 10px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    margin: 0 auto 10px auto;
+    display: block;
+    width: 300px;
+    background-color: #000;
+}
+.stButton button {
+    width: 80px;
+    height: 80px;
+    margin: 3px;
+    font-size: 24px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background-color: #333;
+    color: #fff;
+}
+.stButton button:active {
+    background-color: #555;
+}
