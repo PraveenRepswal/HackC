@@ -1,26 +1,73 @@
-.calculator {
-    width: 340px;
-    margin: 0 auto;
-    padding: 10px;
-    border-radius: 10px;
-    color: #fff;
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
-.calculator input, .calculator button {
+
+.calculator button {
     width: 80px;
     height: 80px;
     margin: 3px;
     font-size: 24px;
     border-radius: 10px;
-    border: none;
-    outline: none;
+    border: 2px solid transparent;
+    background: linear-gradient(135deg, #333, #555);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
-.calculator button {
-    background-color: #333;
-    color: #fff;
+
+.calculator button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+    border: 2px solid #fff;
+    animation: pulse 0.6s;
 }
-.calculator button:active {
+
+.calculator button:after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    width: 300%;
+    height: 300%;
+    top: -50%;
+    left: -50%;
+    transform: scale(0);
+    transition: transform 0.5s;
+}
+
+.calculator button:active:after {
+    transform: scale(1);
+    transition: 0s;
+}
+
+.calculator button.special {
+    background-color: #444;
+}
+
+.calculator button.special:hover {
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
     background-color: #555;
 }
+
+.calculator button.equal {
+    background-color: #555;
+}
+
+.calculator button.equal:hover {
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+    background-color: #666;
+}
+
 .output {
     height: 80px;
     font-size: 32px;
@@ -34,6 +81,7 @@
     width: 300px;
     background-color: #000;
 }
+
 .stButton button {
     width: 80px;
     height: 80px;
@@ -41,10 +89,33 @@
     font-size: 24px;
     border-radius: 10px;
     border: none;
-    outline: none;
     background-color: #333;
     color: #fff;
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
 }
+
+.stButton button:hover {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
 .stButton button:active {
     background-color: #555;
+}
+
+.stButton button.special {
+    background-color: #444;
+}
+
+.stButton button.special:hover {
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+    background-color: #555;
+}
+
+.stButton button.equal {
+    background-color: #555;
+}
+
+.stButton button.equal:hover {
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+    background-color: #666;
 }

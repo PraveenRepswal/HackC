@@ -1,40 +1,40 @@
 import streamlit as st
-import math
 
-# Custom CSS to style the calculator
+
 with open("style.css") as f:
     st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
-# Calculator logic
-def calculate(expression):
+
+def evaluate_expression(expression):
     try:
-        result = eval(expression)
-        return str(result)
-    except Exception as e:
-        return "Error"
+        result = str(eval(expression))
+    except:
+        result = "Error"
+    return result
 
-st.markdown('<div class="calculator">', unsafe_allow_html=True)
 
-# Display
-if "expression" not in st.session_state:
+if 'expression' not in st.session_state:
     st.session_state.expression = ""
 
-# Input/output display
+# Display the output
+st.markdown('<div class="calculator">', unsafe_allow_html=True)
 st.markdown(f'<input type="text" value="{st.session_state.expression}" class="output" disabled>', unsafe_allow_html=True)
 
-# Buttons
-cols = st.columns(4)
+
 buttons = [
-    ('AC', 'C'), ('%', '%'), ('/', '/'), ('*', '*'),
-    ('7', '7'), ('8', '8'), ('9', '9'), ('-', '-'),
-    ('4', '4'), ('5', '5'), ('6', '6'), ('+', '+'),
-    ('1', '1'), ('2', '2'), ('3', '3'), ('=', '='),
-    ('+/-', '±'), ('0', '0'), (',', '.'), ('DEL', 'DEL')
+    ('AC', 'C', 'special'), ('%', '%', ''), ('/', '/', ''), ('*', '*', ''),
+    ('7', '7', ''), ('8', '8', ''), ('9', '9', ''), ('-', '-', ''),
+    ('4', '4', ''), ('5', '5', ''), ('6', '6', ''), ('+', '+', ''),
+    ('1', '1', ''), ('2', '2', ''), ('3', '3', ''), ('=', '=', 'equal'),
+    ('+/-', '±', ''), ('0', '0', ''), (',', '.', ''), ('DEL', 'DEL', 'special')
 ]
 
-for i, (label, value) in enumerate(buttons):
+# Layout for the calculator buttons
+cols = st.columns(4)
+for i, (label, value, btn_class) in enumerate(buttons):
     with cols[i % 4]:
-        if st.button(label):
+        button_html = f'<button class="{btn_class}" data-label="{label}">{label}</button>'
+        if st.button(label, key=label):
             if value == 'C':
                 st.session_state.expression = ""
             elif value == '±':
@@ -45,7 +45,7 @@ for i, (label, value) in enumerate(buttons):
             elif value == 'DEL':
                 st.session_state.expression = st.session_state.expression[:-1]
             elif value == '=':
-                st.session_state.expression = calculate(st.session_state.expression)
+                st.session_state.expression = evaluate_expression(st.session_state.expression)
             else:
                 st.session_state.expression += value
             st.experimental_rerun()
