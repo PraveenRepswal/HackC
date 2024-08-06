@@ -1,0 +1,171 @@
+/* Snowflakes Animation */
+@-webkit-keyframes snowflakes-fall {
+    0% { top: -10%; }
+    100% { top: 100%; }
+}
+
+@-webkit-keyframes snowflakes-shake {
+    0% { -webkit-transform: translateX(0px); transform: translateX(0px); }
+    50% { -webkit-transform: translateX(80px); transform: translateX(80px); }
+    100% { -webkit-transform: translateX(0px); transform: translateX(0px); }
+}
+
+@keyframes snowflakes-fall {
+    0% { top: -10%; }
+    100% { top: 100%; }
+}
+
+@keyframes snowflakes-shake {
+    0% { transform: translateX(0px); }
+    50% { transform: translateX(80px); }
+    100% { transform: translateX(0px); }
+}
+
+.snowflake {
+    position: fixed;
+    top: -10%;
+    z-index: 9999;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: default;
+    -webkit-animation-name: snowflakes-fall, snowflakes-shake;
+    -webkit-animation-duration: 10s, 3s;
+    -webkit-animation-timing-function: linear, ease-in-out;
+    -webkit-animation-iteration-count: infinite, infinite;
+    -webkit-animation-play-state: running, running;
+    animation-name: snowflakes-fall, snowflakes-shake;
+    animation-duration: 10s, 3s;
+    animation-timing-function: linear, ease-in-out;
+    animation-iteration-count: infinite, infinite;
+    animation-play-state: running, running;
+}
+
+.snowflake:nth-of-type(0) { left: 1%; -webkit-animation-delay: 0s, 0s; animation-delay: 0s, 0s; }
+.snowflake:nth-of-type(1) { left: 10%; -webkit-animation-delay: 1s, 1s; animation-delay: 1s, 1s; }
+.snowflake:nth-of-type(2) { left: 20%; -webkit-animation-delay: 6s, .5s; animation-delay: 6s, .5s; }
+.snowflake:nth-of-type(3) { left: 30%; -webkit-animation-delay: 4s, 2s; animation-delay: 4s, 2s; }
+.snowflake:nth-of-type(4) { left: 40%; -webkit-animation-delay: 2s, 2s; animation-delay: 2s, 2s; }
+.snowflake:nth-of-type(5) { left: 50%; -webkit-animation-delay: 8s, 3s; animation-delay: 8s, 3s; }
+.snowflake:nth-of-type(6) { left: 60%; -webkit-animation-delay: 6s, 2s; animation-delay: 6s, 2s; }
+.snowflake:nth-of-type(7) { left: 70%; -webkit-animation-delay: 2.5s, 1s; animation-delay: 2.5s, 1s; }
+.snowflake:nth-of-type(8) { left: 80%; -webkit-animation-delay: 1s, 0s; animation-delay: 1s, 0s; }
+.snowflake:nth-of-type(9) { left: 90%; -webkit-animation-delay: 3s, 1.5s; animation-delay: 3s, 1.5s; }
+
+/* Calculator button and output styles */
+.calculator button {
+    width: 80px;
+    height: 80px;
+    margin: 3px;
+    font-size: 24px;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background: linear-gradient(135deg, #333, #555);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.calculator button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+    border: 2px solid #fff;
+    animation: pulse 0.6s;
+}
+
+.calculator button:after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    width: 300%;
+    height: 300%;
+    top: -50%;
+    left: -50%;
+    transform: scale(0);
+    transition: transform 0.5s;
+}
+
+.calculator button:active:after {
+    transform: scale(1);
+    transition: 0s;
+}
+
+.calculator button.special {
+    background-color: #444;
+}
+
+.calculator button.special:hover {
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+    background-color: #555;
+}
+
+.calculator button.equal {
+    background-color: #555;
+}
+
+.calculator button.equal:hover {
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+    background-color: #666;
+}
+
+.output {
+    height: 80px;
+    font-size: 32px;
+    text-align: right;
+    padding: 0 10px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    margin: 0 auto 10px auto;
+    display: block;
+    width: 300px;
+    background-color: #000;
+}
+
+.stButton button {
+    width: 80px;
+    height: 80px;
+    margin: 3px;
+    font-size: 24px;
+    border-radius: 10px;
+    border: none;
+    background-color: #333;
+    color: #fff;
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.stButton button:hover {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+.stButton button:active {
+    background-color: #555;
+}
+
+.stButton button.special {
+    background-color: #444;
+}
+
+.stButton button.special:hover {
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+    background-color: #555;
+}
+
+.stButton button.equal {
+    background-color: #555;
+}
+
+.stButton button.equal:hover {
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+    background-color: #666;
+}
+
+
+
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+header {visibility: hidden;}
